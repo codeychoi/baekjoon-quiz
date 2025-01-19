@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,21 +9,17 @@ public class Main {
 
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     	
-    	//1. time을 시와 분으로 나눔 ( timeH = time/60 , timeM = time%60 )
-    	//2. h와 m에 각각 더함
-    	//3. h는 24로 나눠서 시간보정, m은 60으로 나눠서 시간보정
-    	//4. m+timeM이 60이 넘으면 h+1, 더해진 h가 24면 0이 되게 수식 추가
+    	// 현재시간을 분으로 바꿈
+    	// 현재시간 + 요리시간 더한 후 시간과 분 단위로 변경
     	
-    	String input = br.readLine(); // 현재 시와 분
-    	int time = Integer.parseInt(br.readLine()); // 요리 시간
-    	
-    	StringTokenizer st = new StringTokenizer(input);
+    	StringTokenizer st = new StringTokenizer(br.readLine());
     	int h = Integer.parseInt(st.nextToken());
     	int m= Integer.parseInt(st.nextToken());
-
-    	int timeH = time/60; //1
-    	int timeM = time%60;  //20
-    	System.out.println( ((h+timeH)%24 + ((m+timeM)/60))%24 +" "+((m+timeM)%60));
-
+    	int time = Integer.parseInt(br.readLine()); //요리 시간
+    	
+    	int totalMinutes = h*60 + m + time;
+    	System.out.println((totalMinutes/60)%24 +" "+(totalMinutes%60));
+    	
+    
     }
 }
